@@ -1,0 +1,15 @@
+# remove old vite.config.js (backup if you want)
+if (Test-Path vite.config.js) { Rename-Item vite.config.js vite.config.js.bak }
+
+# create new ESM config file
+@"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 5173
+  }
+})
+"@ > vite.config.mjs
